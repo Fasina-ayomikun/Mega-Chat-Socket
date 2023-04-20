@@ -7,7 +7,16 @@ app.use(
     credentials: true,
   })
 );
-
+app.use(function (req, res, next) {
+  res.setHeader("Access-Control-Allow-Origin", process.env.FRONTEND_LINK);
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PATCH, DELETE, OPTIONS"
+  );
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  next();
+});
 const io = require("socket.io")(8900, {
   cors: {
     origin: process.env.FRONTEND_LINK,
