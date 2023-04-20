@@ -3,7 +3,7 @@ const cors = require("cors");
 const app = require("express")();
 app.use(
   cors({
-    origin: "https://mega-chat-frontend.vercel.app",
+    origin: process.env.FRONTEND_LINK,
     credentials: true,
   })
 );
@@ -12,7 +12,11 @@ const io = require("socket.io")(8900, {
   cors: {
     origin: process.env.FRONTEND_LINK,
     methods: ["GET", "POST"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    allowedHeaders: [
+      "Content-Type",
+      "Access-Control-Allow-Origin",
+      "Authorization",
+    ],
     credentials: true,
   },
 });
