@@ -2,7 +2,8 @@ require("dotenv").config();
 
 const io = require("socket.io")(8900, {
   cors: {
-    origin: ["https://mega-chat-frontend.vercel.app"],
+    origin: process.env.FRONTEND_LINK,
+    credentials: true,
   },
 });
 let users = [];
