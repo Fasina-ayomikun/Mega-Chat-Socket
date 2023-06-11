@@ -1,4 +1,4 @@
-require("dotenv").config();
+//require("dotenv").config();
 
 const io = require("socket.io")(8900, {
   cors: {
@@ -6,7 +6,7 @@ const io = require("socket.io")(8900, {
     credentials: true,
   },
 });
-console.log(process.env.FRONTEND_LINK);
+//console.log(process.env.FRONTEND_LINK);
 let users = [];
 
 const addUser = (userId, socketId) => {
